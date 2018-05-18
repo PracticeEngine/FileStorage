@@ -15,14 +15,14 @@ namespace PE.Storage
         /// Returns the Blob without the data for the given Id
         /// </summary>
         /// <returns>Blob</returns>
-        Task<PEStorageBlob> GetBlobAsync(int Id);
+        Task<PEStorageBlob> GetBlobAsync(string Id);
 
         /// <summary>
         /// Returns the Data for a Blob
         /// </summary>
         /// <param name="Id">The Blob Id to return data</param>
         /// <returns></returns>
-        Task<byte[]> GetData(int Id);
+        Task<byte[]> GetDataAync(string Id);
 
         /// <summary>
         /// Creates a new blob in the system
