@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
 
 namespace PE.Storage
@@ -28,16 +24,19 @@ namespace PE.Storage
         /// <summary>
         /// Creates a new blob in the system
         /// </summary>
+        /// <param name="blob">The Blob Information</param>
+        /// <param name="data">Stream of Raw Bytes</param>
         /// <returns>New blob Id</returns>
-        Task<string> CreateAsync(PEStorageBlob blob);
+        Task<string> CreateAsync(PEStorageBlob blob, Stream data);
 
         /// <summary>
         /// Updates the provided blob
         /// </summary>
+        /// <param name="Id">The Blob's Id for this Storage Provider</param>
         /// <param name="blob">The Blob to Update</param>
         /// <param name="data">Optional readable stream to retrieve new data</param>
         /// <returns>Nothing</returns>
-        Task UpdateAsync(PEStorageBlob blob, Stream data = null);
+        Task UpdateAsync(string Id, PEStorageBlob blob, Stream data = null);
 
         /// <summary>
         /// Deletes the provided blob
