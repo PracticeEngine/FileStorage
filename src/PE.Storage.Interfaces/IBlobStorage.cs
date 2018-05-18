@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,8 +22,8 @@ namespace PE.Storage
         /// Returns the Data for a Blob
         /// </summary>
         /// <param name="Id">The Blob Id to return data</param>
-        /// <returns></returns>
-        Task<byte[]> GetDataAync(string Id);
+        /// <returns>An open Stream that provides access to the data</returns>
+        Task<Stream> GetDataAync(string Id);
 
         /// <summary>
         /// Creates a new blob in the system
@@ -34,9 +35,9 @@ namespace PE.Storage
         /// Updates the provided blob
         /// </summary>
         /// <param name="blob">The Blob to Update</param>
-        /// <param name="data">Optional (if null) do not update blob data</param>
+        /// <param name="data">Optional readable stream to retrieve new data</param>
         /// <returns>Nothing</returns>
-        Task UpdateAsync(PEStorageBlob blob, byte[] data = null);
+        Task UpdateAsync(PEStorageBlob blob, Stream data = null);
 
         /// <summary>
         /// Deletes the provided blob
