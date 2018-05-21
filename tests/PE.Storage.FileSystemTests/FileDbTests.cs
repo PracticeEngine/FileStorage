@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PE.Storage.FileSystem;
@@ -48,7 +50,7 @@ namespace PE.Storage.FileSystemTests
             // Setup
             var tmp = Path.GetTempFileName();
             File.Delete(tmp);
-            var path = Path.GetDirectoryName(tmp);
+            var path = Path.GetDirectoryName(tmp) + "\\nextfile";
             var store = new DirectoryInfo(path).Name;
             if (!Directory.Exists(path))
                 Directory.CreateDirectory(path);
@@ -67,6 +69,35 @@ namespace PE.Storage.FileSystemTests
             // Verify
             Assert.IsTrue(File.Exists(lockFile));
             Assert.AreEqual(store + "\\0001\\0001\\013E", file);
+        }
+
+        [TestMethod]
+        public void NextAvailableFile_Deadlock_Retry_Test()
+        {
+            // Setup
+            var tmp = Path.GetTempFileName();
+            File.Delete(tmp);
+            var path = Path.GetDirectoryName(tmp) + "\\deadlocktest";
+            var store = new DirectoryInfo(path).Name;
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+            var lockFile = Path.Combine(path, "store.lock");
+            if (File.Exists(lockFile))
+                File.Delete(lockFile);
+
+            // Test - intentionally run all at once to create deadlocks on the file
+            var db = new FileDb(path);
+            var taskList = new List<Task<string>>();
+            for (var x = 1; x <= 50; x++)
+            {
+                taskList.Add(db.NextAvailableFile());
+            }
+            Task.WaitAll(taskList.ToArray());
+
+            // Verify
+            var distincts = taskList.Select(task => task.Result).Distinct();
+            var distinctCount = distincts.Count();
+            Assert.AreEqual(50, distinctCount);
         }
 
         [TestMethod]

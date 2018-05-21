@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -62,6 +63,10 @@ namespace PE.Storage.FileSystem
                 }
                 catch (IOException ioe)
                 {
+                    if (numTries == 0)
+                        throw ioe;
+
+                    Debug.WriteLine("lock file busy - waiting");
                     // Failed - wait 5ms, then retry
                     Thread.Sleep(5);
                 }
