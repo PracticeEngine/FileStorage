@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PE.Storage.FileSystem
@@ -12,12 +9,11 @@ namespace PE.Storage.FileSystem
     {
         private readonly FileStorageOptions _options;
         private readonly StoreManager _manager;
-        private readonly StoragePathBuilder _pathBuilder;
 
         /// <summary>
         /// Constructor that builds Options from Default Settings
         /// </summary>
-        FileSystemBlobProvider() : this(FileStorageOptions.CreateFromDefaultSettings())
+        public FileSystemBlobProvider() : this(FileStorageOptions.CreateFromDefaultSettings())
         {
 
         }
@@ -26,7 +22,7 @@ namespace PE.Storage.FileSystem
         /// Constructor that uses provided settings
         /// </summary>
         /// <param name="options"></param>
-        FileSystemBlobProvider(FileStorageOptions options)
+        public FileSystemBlobProvider(FileStorageOptions options)
         {
             if (options == null)
                 throw new ArgumentNullException(nameof(options));
@@ -37,8 +33,7 @@ namespace PE.Storage.FileSystem
             }
             options.RootPath = rootDirectory;
             _options = options;
-            _manager = new StoreManager();
-            _pathBuilder = new StoragePathBuilder(rootDirectory);
+            _manager = new StoreManager(rootDirectory);
         }
 
         /// <summary>
@@ -48,11 +43,9 @@ namespace PE.Storage.FileSystem
         /// <returns></returns>
         public async Task<string> CreateAsync(PEStorageBlob blob, Stream data)
         {
-            var store = _manager.GetRandomStoreFolder();
-            var storePath = _pathBuilder.GetStoreFolder(store);
-            var newBlob = await _manager.NextAvailableFile(storePath);
-            var blobMeta = _pathBuilder.GetJsonFile(store, newBlob);
-            var blobData = _pathBuilder.GetBlobFile(store, newBlob);
+            var blobId = await _manager.GetStoreDb().NextAvailableFile();
+            var blobMeta = _manager.GetMetaPath(blobId);
+            var blobData = _manager.GetDataPath(blobId);
             var blobPath = Path.GetDirectoryName(blobMeta);
             if (!Directory.Exists(blobPath))
             {
@@ -69,7 +62,7 @@ namespace PE.Storage.FileSystem
                 await data.CopyToAsync(dataStream);
                 await dataStream.FlushAsync();
             }
-            return newBlob;
+            return blobId;
         }
 
         /// <summary>
@@ -79,7 +72,13 @@ namespace PE.Storage.FileSystem
         /// <returns></returns>
         public Task DeleteAsync(string Id)
         {
-            throw new NotImplementedException();
+            var blobMeta = _manager.GetMetaPath(Id);
+            var blobData = _manager.GetDataPath(Id);
+            if (File.Exists(blobMeta))
+                File.Delete(blobMeta);
+            if (File.Exists(blobData))
+                File.Delete(blobData);
+            return Task.CompletedTask;
         }
 
         /// <summary>
@@ -89,7 +88,10 @@ namespace PE.Storage.FileSystem
         /// <returns></returns>
         public Task<PEStorageBlob> GetBlobAsync(string Id)
         {
-            throw new NotImplementedException();
+            var blobMeta = _manager.GetMetaPath(Id);
+            var metaJson = File.ReadAllText(blobMeta);
+            var metaData = JsonConvert.DeserializeObject<PEStorageBlob>(metaJson);
+            return Task.FromResult(metaData);
         }
 
         /// <summary>
@@ -97,9 +99,16 @@ namespace PE.Storage.FileSystem
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public Task<Stream> GetDataAync(string Id)
+        public async Task<Stream> GetDataAync(string Id)
         {
-            throw new NotImplementedException();
+            var blobData = _manager.GetDataPath(Id);
+            var memoryStream = new MemoryStream();
+            using (var stream = File.Open(blobData, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                await stream.CopyToAsync(memoryStream);
+            }
+            memoryStream.Seek(0, SeekOrigin.Begin);
+            return memoryStream;
         }
 
         /// <summary>
@@ -109,9 +118,19 @@ namespace PE.Storage.FileSystem
         /// <param name="blob"></param>
         /// <param name="data"></param>
         /// <returns></returns>
-        public Task UpdateAsync(string Id, PEStorageBlob blob, Stream data = null)
+        public async Task UpdateAsync(string Id, PEStorageBlob blob, Stream data = null)
         {
-            throw new NotImplementedException();
+            var blobMeta = _manager.GetMetaPath(Id);
+            var metaJson = JsonConvert.SerializeObject(blob, Formatting.None);
+            File.WriteAllText(blobMeta, metaJson);
+            if (data != null)
+            {
+                var blobData = _manager.GetDataPath(Id);
+                using (var fileStream = File.Open(blobData, FileMode.Open, FileAccess.Write, FileShare.None))
+                {
+                    await data.CopyToAsync(fileStream);
+                }
+            }
         }
     }
 }

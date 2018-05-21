@@ -12,11 +12,6 @@ namespace PE.Storage
     public class PEStorageBlob
     {
         /// <summary>
-        /// Store-Generated Identifier for the Blob
-        /// </summary>
-        public string Id { get; set; }
-
-        /// <summary>
         /// Data-Uri Small Thumbnail (should be in web-compatible format e.g. PNG)
         /// </summary>
         public string DataUriThumbnail { get; set; }

@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileStorageOptions.cs" />
+    <Compile Include="FileDb.cs" />
     <Compile Include="FileSystemBlobProvider.cs" />
-    <Compile Include="StoragePathBuilder.cs" />
     <Compile Include="StoreManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
