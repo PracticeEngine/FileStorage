@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PE.Storage.BlobTable;
 
-namespace PE.Storage.BlogTableTests
+namespace PE.Storage.BlobTableTests
 {
     [TestClass]
     public class BlobTableBlobProviderTests

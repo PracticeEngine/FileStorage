@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.FileSystemTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.AzureStorageTests", "tests\PE.Storage.AzureStorageTests\PE.Storage.AzureStorageTests.csproj", "{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.BlogTableTests", "tests\PE.Storage.BlogTableTests\PE.Storage.BlogTableTests.csproj", "{3F319746-6770-4D48-A3C4-262C24DE4D3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.BlobTableTests", "tests\PE.Storage.BlobTableTests\PE.Storage.BlobTableTests.csproj", "{3F319746-6770-4D48-A3C4-262C24DE4D3D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

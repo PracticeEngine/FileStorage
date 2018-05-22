@@ -54,7 +54,7 @@ namespace PE.Storage.BlobTable
                     newBlobId = (int) await cmd.ExecuteScalarAsync().ConfigureAwait(false);
                 }
             }
-            return newBlobId.ToString("D6");
+            return newBlobId.ToString("D9");
         }
 
         /// <summary>
