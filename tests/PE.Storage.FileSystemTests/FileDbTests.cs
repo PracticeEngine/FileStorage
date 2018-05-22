@@ -88,7 +88,7 @@ namespace PE.Storage.FileSystemTests
             // Test - intentionally run all at once to create deadlocks on the file
             var db = new FileDb(path);
             var taskList = new List<Task<string>>();
-            for (var x = 1; x <= 50; x++)
+            for (var x = 1; x <= 5; x++)
             {
                 taskList.Add(db.NextAvailableFile());
             }
@@ -97,7 +97,7 @@ namespace PE.Storage.FileSystemTests
             // Verify
             var distincts = taskList.Select(task => task.Result).Distinct();
             var distinctCount = distincts.Count();
-            Assert.AreEqual(50, distinctCount);
+            Assert.AreEqual(5, distinctCount);
         }
 
         [TestMethod]

@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5D53EBB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.FileSystemTests", "tests\PE.Storage.FileSystemTests\PE.Storage.FileSystemTests.csproj", "{43B56E83-A0F7-45D1-9085-F59938CD34A1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.AzureStorageTests", "tests\PE.Storage.AzureStorageTests\PE.Storage.AzureStorageTests.csproj", "{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
 		{72315029-17D9-4F4B-9E34-5909BD9A0138} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
 		{43B56E83-A0F7-45D1-9085-F59938CD34A1} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
+		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FB7F59B-9B56-47A3-BA29-83F2D4AA2BE2}

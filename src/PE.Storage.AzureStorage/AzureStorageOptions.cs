@@ -5,26 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PE.Storage.FileSystem
+namespace PE.Storage.AzureStorage
 {
-    public class FileStorageOptions
+    public class AzureStorageOptions
     {
-        public string RootPath { get; set; }
+        public string AccountConnectionString { get; set; }
 
         /// <summary>
         /// Static Method that attempts to create FileStorageOptions from the Default Configuration Manager
         /// </summary>
         /// <returns></returns>
-        public static FileStorageOptions CreateFromDefaultSettings()
+        public static AzureStorageOptions CreateFromDefaultSettings()
         {
-            var rootPath = ConfigurationManager.AppSettings["PEStorage:RootPath"];
-            if (String.IsNullOrWhiteSpace(rootPath))
+            var connString = ConfigurationManager.ConnectionStrings["PEStorageConnectionString"];
+            if (connString == null)
             {
                 return null;
             }
-            return new FileStorageOptions
+            return new AzureStorageOptions
             {
-                RootPath = rootPath
+                AccountConnectionString = connString.ConnectionString
             };
         }
     }
