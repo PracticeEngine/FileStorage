@@ -47,9 +47,9 @@ namespace PE.Storage.AzureStorage
         {
             if (!_containersCreated)
             {
-                _ = await _blobClient.GetContainerReference("thumbs").CreateIfNotExistsAsync();
-                _ = await _blobClient.GetContainerReference("blobs").CreateIfNotExistsAsync();
-                _ = await _tableClient.GetTableReference("blobmeta").CreateIfNotExistsAsync();
+                _ = await _blobClient.GetContainerReference("thumbs").CreateIfNotExistsAsync().ConfigureAwait(false);
+                _ = await _blobClient.GetContainerReference("blobs").CreateIfNotExistsAsync().ConfigureAwait(false);
+                _ = await _tableClient.GetTableReference("blobmeta").CreateIfNotExistsAsync().ConfigureAwait(false);
                 _containersCreated = true;
             }
         }
@@ -62,7 +62,7 @@ namespace PE.Storage.AzureStorage
         /// <returns></returns>
         public async Task<string> CreateAsync(PEStorageBlob blob, Stream data)
         {
-            await EnsureContainers();
+            await EnsureContainers().ConfigureAwait(false);
             // Create metadata
             var newBlob = MetaTable.NewEntity(blob);
             // Save Blob data
@@ -85,7 +85,7 @@ namespace PE.Storage.AzureStorage
             // Save metadata
             var metaTable = _tableClient.GetTableReference("blobmeta");
             var addOp = TableOperation.Insert(newBlob);
-            _ = await metaTable.ExecuteAsync(addOp);
+            _ = await metaTable.ExecuteAsync(addOp).ConfigureAwait(false);
             return newBlob.Id;
         }
 
@@ -101,7 +101,7 @@ namespace PE.Storage.AzureStorage
             var metaTable = _tableClient.GetTableReference("blobmeta");
             var tableEntity = MetaTable.GetKeysFromId(Id);
             var getOp = TableOperation.Retrieve<MetaTable>(tableEntity.PartitionKey, tableEntity.RowKey);
-            var tableResult = await metaTable.ExecuteAsync(getOp);
+            var tableResult = await metaTable.ExecuteAsync(getOp).ConfigureAwait(false);
             var metaData = (MetaTable)tableResult.Result;
             // Delete the blob
             var blobContainer = _blobClient.GetContainerReference("blobs");
@@ -116,7 +116,7 @@ namespace PE.Storage.AzureStorage
             }
             // Delete the Metadata
             var deleteOp = TableOperation.Delete(metaData);
-            _ = await metaTable.ExecuteAsync(deleteOp);
+            _ = await metaTable.ExecuteAsync(deleteOp).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace PE.Storage.AzureStorage
             var metaTable = _tableClient.GetTableReference("blobmeta");
             var tableEntity = MetaTable.GetKeysFromId(Id);
             var getOp = TableOperation.Retrieve<MetaTable>(tableEntity.PartitionKey, tableEntity.RowKey);
-            var tableResult = await metaTable.ExecuteAsync(getOp);
+            var tableResult = await metaTable.ExecuteAsync(getOp).ConfigureAwait(false);
             var metaData = (MetaTable)tableResult.Result;
             // Load the Thumbnail
             string thumbData = null;
@@ -139,11 +139,11 @@ namespace PE.Storage.AzureStorage
             {
                 var thumbsContainer = _blobClient.GetContainerReference("thumbs");
                 var thumbStore = thumbsContainer.GetBlockBlobReference(new CloudBlockBlob(new Uri(metaData.ThumbnailUri)).Name);
-                using (var thumbStream = await thumbStore.OpenReadAsync())
+                using (var thumbStream = await thumbStore.OpenReadAsync().ConfigureAwait(false))
                 {
                     using (StreamReader reader = new StreamReader(thumbStream))
                     {
-                        thumbData = await reader.ReadToEndAsync();
+                        thumbData = await reader.ReadToEndAsync().ConfigureAwait(false);
                     }
                 }
             }
@@ -168,15 +168,15 @@ namespace PE.Storage.AzureStorage
             var metaTable = _tableClient.GetTableReference("blobmeta");
             var tableEntity = MetaTable.GetKeysFromId(Id);
             var getOp = TableOperation.Retrieve<MetaTable>(tableEntity.PartitionKey, tableEntity.RowKey);
-            var tableResult = await metaTable.ExecuteAsync(getOp);
+            var tableResult = await metaTable.ExecuteAsync(getOp).ConfigureAwait(false);
             var metaData = (MetaTable)tableResult.Result;
             // Load the Data to MemoryStream
             var dataStream = new MemoryStream();
             var blobContainer = _blobClient.GetContainerReference("blobs");
             var blobStore = blobContainer.GetBlockBlobReference(new CloudBlockBlob(new Uri(metaData.BlobUri)).Name);
-            using (var blobStream = await blobStore.OpenReadAsync())
+            using (var blobStream = await blobStore.OpenReadAsync().ConfigureAwait(false))
             {
-                await blobStream.CopyToAsync(dataStream);
+                await blobStream.CopyToAsync(dataStream).ConfigureAwait(false);
             }
             // Rewind and Return the Stream
             dataStream.Seek(0, SeekOrigin.Begin);
@@ -212,7 +212,7 @@ namespace PE.Storage.AzureStorage
                 // Create a Thumbnail - one's been added
                 var thumbsContainer = _blobClient.GetContainerReference("thumbs");
                 var thumbStore = thumbsContainer.GetBlockBlobReference(Id);
-                await thumbStore.UploadTextAsync(blob.DataUriThumbnail);
+                await thumbStore.UploadTextAsync(blob.DataUriThumbnail).ConfigureAwait(false);
                 metaData.ThumbnailUri = thumbStore.Uri.AbsoluteUri;
             }
             else if (!String.IsNullOrWhiteSpace(blob.DataUriThumbnail))
@@ -220,7 +220,7 @@ namespace PE.Storage.AzureStorage
                 // Update the Thumbnail
                 var thumbsContainer = _blobClient.GetContainerReference("thumbs");
                 var thumbStore = thumbsContainer.GetBlockBlobReference(Id);
-                await thumbStore.UploadTextAsync(blob.DataUriThumbnail);
+                await thumbStore.UploadTextAsync(blob.DataUriThumbnail).ConfigureAwait(false);
             }
             // Load the Data to Blob if Data's been updated
             if (data != null)
@@ -229,11 +229,11 @@ namespace PE.Storage.AzureStorage
                 var blobStore = blobContainer.GetBlockBlobReference(new CloudBlockBlob(new Uri(metaData.BlobUri)).Name);
                 if (data.CanSeek && data.Position > 0)
                     data.Seek(0, SeekOrigin.Begin);
-                await blobStore.UploadFromStreamAsync(data);
+                await blobStore.UploadFromStreamAsync(data).ConfigureAwait(false);
             }
             // Finally update the Metadata Table
             var replaceOp = TableOperation.Replace(metaData);
-            _ = await metaTable.ExecuteAsync(replaceOp);
+            _ = await metaTable.ExecuteAsync(replaceOp).ConfigureAwait(false);
         }
     }
 }

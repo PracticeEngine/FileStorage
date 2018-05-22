@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
 
 namespace PE.Storage.AzureStorage
 {
@@ -12,7 +7,7 @@ namespace PE.Storage.AzureStorage
         public string AccountConnectionString { get; set; }
 
         /// <summary>
-        /// Static Method that attempts to create FileStorageOptions from the Default Configuration Manager
+        /// Static Method that attempts to create <see cref="AzureStorageOptions"/> from the Default Configuration Manager
         /// </summary>
         /// <returns></returns>
         public static AzureStorageOptions CreateFromDefaultSettings()

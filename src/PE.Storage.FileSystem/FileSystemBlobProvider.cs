@@ -59,8 +59,8 @@ namespace PE.Storage.FileSystem
             }
             using (FileStream dataStream = File.Open(blobData, FileMode.CreateNew, FileAccess.Write))
             {
-                await data.CopyToAsync(dataStream);
-                await dataStream.FlushAsync();
+                await data.CopyToAsync(dataStream).ConfigureAwait(false);
+                await dataStream.FlushAsync().ConfigureAwait(false);
             }
             return blobId;
         }
@@ -105,7 +105,7 @@ namespace PE.Storage.FileSystem
             var memoryStream = new MemoryStream();
             using (var stream = File.Open(blobData, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                await stream.CopyToAsync(memoryStream);
+                await stream.CopyToAsync(memoryStream).ConfigureAwait(false);
             }
             memoryStream.Seek(0, SeekOrigin.Begin);
             return memoryStream;
@@ -128,7 +128,7 @@ namespace PE.Storage.FileSystem
                 var blobData = _manager.GetDataPath(Id);
                 using (var fileStream = File.Open(blobData, FileMode.Open, FileAccess.Write, FileShare.None))
                 {
-                    await data.CopyToAsync(fileStream);
+                    await data.CopyToAsync(fileStream).ConfigureAwait(false);
                 }
             }
         }

@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlobTableOptions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="BlobTableBlobProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PE.Storage.Interfaces\PE.Storage.Interfaces.csproj">
+      <Project>{a452954d-e15b-4848-b0a9-d13e4e781cc6}</Project>
+      <Name>PE.Storage.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
