@@ -46,7 +46,7 @@ namespace PE.Storage.BlobTable
                 using (var cmd = con.CreateCommand())
                 {
                     cmd.CommandText = "INSERT INTO [dbo].[tblBlobStorage] (Thumbnail,Blob,FileName,ContentType) VALUES (@Thumbnail,@Blob,@FileName,@ContentType); SELECT CAST(SCOPE_IDENTITY() as int);";
-                    cmd.Parameters.AddWithValue("@Thumbnail", blob.DataUriThumbnail);
+                    cmd.Parameters.AddWithValue("@Thumbnail", blob.DataUriThumbnail ?? "");
                     cmd.Parameters.AddWithValue("@Blob", new SqlBytes(data));
                     cmd.Parameters.AddWithValue("@FileName", blob.FileName);
                     cmd.Parameters.AddWithValue("@ContentType", blob.ContentType);

@@ -78,6 +78,23 @@ namespace PE.Storage.FileSystem
                 File.Delete(blobMeta);
             if (File.Exists(blobData))
                 File.Delete(blobData);
+            // Cleanup unused Directories
+            var path = new DirectoryInfo(Path.GetDirectoryName(blobMeta));
+            var hasFiles = path.GetFileSystemInfos().Length > 0;
+            while (!hasFiles)
+            {
+                path.Delete();
+                path = path.Parent;
+                hasFiles = path.GetFileSystemInfos().Length > 0;
+            }
+            // Remove the Store Folder if all files have been removed
+            if (path.GetFileSystemInfos().Length == 1)
+            {
+                if (path.GetFiles("store.lock").Length == 1)
+                {
+                    path.Delete(true);
+                }
+            }
             return Task.CompletedTask;
         }
 
