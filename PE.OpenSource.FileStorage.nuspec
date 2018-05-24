@@ -39,16 +39,16 @@
       <dependency id="Newtonsoft.Json" version="10.0.2" />
       <dependency id="WindowsAzure.Storage" version="9.1.1" />
     </dependencies>
-    <!-- Insert below <metadata> element -->
-    <files>
-      <file src="src\PE.Storage.Interfaces\bin\Release\*.dll" target="lib\net46" />
-      <file src="src\PE.Storage.Interfaces\bin\Release\*.pdb" target="lib\net46" />
-      <file src="src\PE.Storage.AzureStorage\bin\Release\*.dll" target="lib\net46" />
-      <file src="src\PE.Storage.AzureStorage\bin\Release\*.pdb" target="lib\net46" />
-      <file src="src\PE.Storage.BlobTable\bin\Release\*.dll" target="lib\net46" />
-      <file src="src\PE.Storage.BlobTable\bin\Release\*.pdb" target="lib\net46" />
-      <file src="src\PE.Storage.FileSystem\bin\Release\*.dll" target="lib\net46" />
-      <file src="src\PE.Storage.FileSystem\bin\Release\*.pdb" target="lib\net46" />
-    </files>
   </metadata>
+  <!-- Insert below <metadata> element -->
+  <files>
+    <file src="src\PE.Storage.Interfaces\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.Storage.Interfaces\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.Storage.AzureStorage\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.Storage.AzureStorage\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.Storage.BlobTable\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.Storage.BlobTable\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.Storage.FileSystem\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.Storage.FileSystem\bin\Release\*.pdb" target="lib\net46" />
+  </files>
 </package>
