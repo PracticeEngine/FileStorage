@@ -42,13 +42,13 @@
   </metadata>
   <!-- Insert below <metadata> element -->
   <files>
-    <file src="src\PE.Storage.Interfaces\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.Storage.Interfaces\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.Storage.AzureStorage\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.Storage.AzureStorage\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.Storage.BlobTable\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.Storage.BlobTable\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.Storage.FileSystem\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.Storage.FileSystem\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.BlobStorage.Interfaces\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.BlobStorage.Interfaces\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.BlobStorage.BlobTable\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.BlobStorage.BlobTable\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.BlobStorage.FileSystem\bin\Release\*.dll" target="lib\net46" />
+    <file src="src\PE.BlobStorage.FileSystem\bin\Release\*.pdb" target="lib\net46" />
   </files>
 </package>
