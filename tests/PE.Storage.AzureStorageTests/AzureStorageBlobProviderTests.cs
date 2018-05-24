@@ -18,8 +18,9 @@ namespace PE.Storage.AzureStorageTests
             }, "Does not throw if null options");
         }
 
+        [TestCategory("Integration")]
         [TestMethod]
-        public async Task Provider_Integration_Test()
+        public async Task AzureStorageProvider_Integration_Test()
         {
             // Setup
             var blob1 = new PEStorageBlob

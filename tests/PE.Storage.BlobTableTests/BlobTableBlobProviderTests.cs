@@ -9,6 +9,7 @@ namespace PE.Storage.BlobTableTests
     [TestClass]
     public class BlobTableBlobProviderTests
     {
+        [TestCategory("Integration")]
         [TestMethod]
         public async Task BlobTableProvider_IntegrationTest()
         {
