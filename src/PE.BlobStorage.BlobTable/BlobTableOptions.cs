@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace PE.Storage.BlobTable
+namespace PE.BlobStorage.BlobTable
 {
     public class BlobTableOptions
     {

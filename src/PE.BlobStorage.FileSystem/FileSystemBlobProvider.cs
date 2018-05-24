@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace PE.Storage.FileSystem
+namespace PE.BlobStorage.FileSystem
 {
     public class FileSystemBlobProvider : IBlobStorage
     {

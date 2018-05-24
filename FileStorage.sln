@@ -3,23 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.Interfaces", "src\PE.Storage.Interfaces\PE.Storage.Interfaces.csproj", "{A452954D-E15B-4848-B0A9-D13E4E781CC6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.FileSystem", "src\PE.Storage.FileSystem\PE.Storage.FileSystem.csproj", "{9395405C-4C68-4270-AFE8-662186337FEF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.BlobTable", "src\PE.Storage.BlobTable\PE.Storage.BlobTable.csproj", "{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.AzureStorage", "src\PE.Storage.AzureStorage\PE.Storage.AzureStorage.csproj", "{72315029-17D9-4F4B-9E34-5909BD9A0138}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{E5D53EBB-1185-474A-8AF3-2B04C37018FC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.FileSystemTests", "tests\PE.Storage.FileSystemTests\PE.Storage.FileSystemTests.csproj", "{43B56E83-A0F7-45D1-9085-F59938CD34A1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.AzureStorageTests", "tests\PE.Storage.AzureStorageTests\PE.Storage.AzureStorageTests.csproj", "{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.Storage.BlobTableTests", "tests\PE.Storage.BlobTableTests\PE.Storage.BlobTableTests.csproj", "{3F319746-6770-4D48-A3C4-262C24DE4D3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlobMigrationTool", "src\BlobMigrationTool\BlobMigrationTool.csproj", "{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}"
 EndProject
@@ -28,32 +14,46 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		PE.OpenSource.FileStorage.nuspec = PE.OpenSource.FileStorage.nuspec
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.Interfaces", "src\PE.BlobStorage.Interfaces\PE.BlobStorage.Interfaces.csproj", "{A452954D-E15B-4848-B0A9-D13E4E781CC6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.AzureStorage", "src\PE.BlobStorage.AzureStorage\PE.BlobStorage.AzureStorage.csproj", "{72315029-17D9-4F4B-9E34-5909BD9A0138}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.BlobTable", "src\PE.BlobStorage.BlobTable\PE.BlobStorage.BlobTable.csproj", "{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.FileSystem", "src\PE.BlobStorage.FileSystem\PE.BlobStorage.FileSystem.csproj", "{9395405C-4C68-4270-AFE8-662186337FEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.AzureStorageTests", "tests\PE.BlobStorage.AzureStorageTests\PE.BlobStorage.AzureStorageTests.csproj", "{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.BlobTableTests", "tests\PE.BlobStorage.BlobTableTests\PE.BlobStorage.BlobTableTests.csproj", "{3F319746-6770-4D48-A3C4-262C24DE4D3D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PE.BlobStorage.FileSystemTests", "tests\PE.BlobStorage.FileSystemTests\PE.BlobStorage.FileSystemTests.csproj", "{43B56E83-A0F7-45D1-9085-F59938CD34A1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A452954D-E15B-4848-B0A9-D13E4E781CC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A452954D-E15B-4848-B0A9-D13E4E781CC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A452954D-E15B-4848-B0A9-D13E4E781CC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A452954D-E15B-4848-B0A9-D13E4E781CC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9395405C-4C68-4270-AFE8-662186337FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9395405C-4C68-4270-AFE8-662186337FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9395405C-4C68-4270-AFE8-662186337FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9395405C-4C68-4270-AFE8-662186337FEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{72315029-17D9-4F4B-9E34-5909BD9A0138}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{72315029-17D9-4F4B-9E34-5909BD9A0138}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72315029-17D9-4F4B-9E34-5909BD9A0138}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72315029-17D9-4F4B-9E34-5909BD9A0138}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9395405C-4C68-4270-AFE8-662186337FEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9395405C-4C68-4270-AFE8-662186337FEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9395405C-4C68-4270-AFE8-662186337FEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9395405C-4C68-4270-AFE8-662186337FEF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,21 +62,21 @@ Global
 		{3F319746-6770-4D48-A3C4-262C24DE4D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3F319746-6770-4D48-A3C4-262C24DE4D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3F319746-6770-4D48-A3C4-262C24DE4D3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E3A81C9-A4F6-4DC0-81A5-1394E9C0E0F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43B56E83-A0F7-45D1-9085-F59938CD34A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{9395405C-4C68-4270-AFE8-662186337FEF} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
-		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
 		{72315029-17D9-4F4B-9E34-5909BD9A0138} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
-		{43B56E83-A0F7-45D1-9085-F59938CD34A1} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
+		{D8CD6E9C-AFF9-46D2-A650-27988A780AFA} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
+		{9395405C-4C68-4270-AFE8-662186337FEF} = {56FB5DFE-E34C-4C95-A3A5-2DB1AD882C88}
 		{B9F963A0-1C0B-4D9A-A0EC-059F676950FE} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
 		{3F319746-6770-4D48-A3C4-262C24DE4D3D} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
+		{43B56E83-A0F7-45D1-9085-F59938CD34A1} = {E5D53EBB-1185-474A-8AF3-2B04C37018FC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1FB7F59B-9B56-47A3-BA29-83F2D4AA2BE2}

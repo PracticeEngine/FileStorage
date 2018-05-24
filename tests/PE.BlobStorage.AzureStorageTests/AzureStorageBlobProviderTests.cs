@@ -2,16 +2,25 @@
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PE.Storage.BlobTable;
+using PE.BlobStorage.AzureStorage;
 
-namespace PE.Storage.BlobTableTests
+namespace PE.BlobStorage.AzureStorageTests
 {
     [TestClass]
-    public class BlobTableBlobProviderTests
+    public class AzureStorageBlobProviderTests
     {
+        [TestMethod]
+        public void Provider_Throws_If_Null_Options()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() =>
+            {
+                var x = new AzureStorageBlobProvider(null);
+            }, "Does not throw if null options");
+        }
+
         [TestCategory("Integration")]
         [TestMethod]
-        public async Task BlobTableProvider_IntegrationTest()
+        public async Task AzureStorageProvider_Integration_Test()
         {
             // Setup
             var blob1 = new PEStorageBlob
@@ -20,7 +29,7 @@ namespace PE.Storage.BlobTableTests
                 FileName = "afile.unittest",
                 DataUriThumbnail = "unit.thumb"
             };
-            var provider = new BlobTableBlobProvider(new BlobTableOptions { DatabaseConnectionString = "Data Source=.;Initial Catalog=Engine_Master_961;Integrated Security=True" });
+            var provider = new AzureStorageBlobProvider(new AzureStorageOptions { AccountConnectionString = "UseDevelopmentStorage=true" });
 
             // Tests
             PEStorageBlob blob2;

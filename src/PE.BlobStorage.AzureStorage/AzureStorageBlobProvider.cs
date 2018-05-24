@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PE.Storage.AzureStorage
+namespace PE.BlobStorage.AzureStorage
 {
     public class AzureStorageBlobProvider : IBlobStorage
     {

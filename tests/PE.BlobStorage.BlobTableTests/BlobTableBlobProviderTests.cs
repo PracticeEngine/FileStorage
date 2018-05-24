@@ -2,38 +2,35 @@
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PE.Storage.FileSystem;
+using PE.BlobStorage.BlobTable;
 
-namespace PE.Storage.FileSystemTests
+namespace PE.BlobStorage.BlobTableTests
 {
     [TestClass]
-    public class FileSystemBlobProviderTests
+    public class BlobTableBlobProviderTests
     {
+        [TestCategory("Integration")]
         [TestMethod]
-        public async Task Provider_Integration_Test()
+        public async Task BlobTableProvider_IntegrationTest()
         {
             // Setup
-            var tmp = Path.GetTempFileName();
-            File.Delete(tmp);
-            var path = Path.GetDirectoryName(tmp).TrimEnd('\\') + "\\integrationtest";
-            if (Directory.Exists(path))
-                Directory.Delete(path, true);
-
-            // Tests
-            var provider = new FileSystemBlobProvider(new FileStorageOptions { RootPath = path });
             var blob1 = new PEStorageBlob
             {
                 ContentType = "application/unit-test",
                 FileName = "afile.unittest",
-                DataUriThumbnail= "unit.thumb"
+                DataUriThumbnail = "unit.thumb"
             };
+            var provider = new BlobTableBlobProvider(new BlobTableOptions { DatabaseConnectionString = "Data Source=.;Initial Catalog=Engine_Master_961;Integrated Security=True" });
+
+            // Tests
             PEStorageBlob blob2;
             byte[] array1;
             byte[] array2;
+            string id1;
             using (var ms1 = new MemoryStream(new byte[] { 0x002, 0x003, 0x034, 0xac }))
             {
                 // Save it
-                var id1 = await provider.CreateAsync(blob1, ms1);
+                id1 = await provider.CreateAsync(blob1, ms1);
                 // Now Retrieve it
                 blob2 = await provider.GetBlobAsync(id1);
                 using (var ms2 = await provider.GetDataAync(id1))
@@ -48,6 +45,8 @@ namespace PE.Storage.FileSystemTests
                     array2 = resultStream.ToArray();
                 }
             }
+            // Delete
+            await provider.DeleteAsync(id1);
 
 
             // Verify

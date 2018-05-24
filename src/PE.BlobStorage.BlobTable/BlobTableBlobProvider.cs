@@ -5,7 +5,7 @@ using System.Data.SqlTypes;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace PE.Storage.BlobTable
+namespace PE.BlobStorage.BlobTable
 {
     public class BlobTableBlobProvider : IBlobStorage
     {

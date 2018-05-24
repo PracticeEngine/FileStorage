@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace PE.Storage.FileSystem
+namespace PE.BlobStorage.FileSystem
 {
     /// <summary>
     /// Operates over a specific folder with a store.lock in the root which is used for naming logic

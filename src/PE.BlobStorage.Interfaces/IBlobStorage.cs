@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace PE.Storage
+namespace PE.BlobStorage
 {
     /// <summary>
     /// Abstraction to store persisted files for Practice Engine

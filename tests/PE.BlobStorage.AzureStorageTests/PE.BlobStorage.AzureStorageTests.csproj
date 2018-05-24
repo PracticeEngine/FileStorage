@@ -7,8 +7,8 @@
     <ProjectGuid>{B9F963A0-1C0B-4D9A-A0EC-059F676950FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PE.Storage.AzureStorageTests</RootNamespace>
-    <AssemblyName>PE.Storage.AzureStorageTests</AssemblyName>
+    <RootNamespace>PE.BlobStorage.AzureStorageTests</RootNamespace>
+    <AssemblyName>PE.BlobStorage.AzureStorageTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -66,13 +66,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PE.Storage.AzureStorage\PE.Storage.AzureStorage.csproj">
+    <ProjectReference Include="..\..\src\PE.BlobStorage.AzureStorage\PE.BlobStorage.AzureStorage.csproj">
       <Project>{72315029-17d9-4f4b-9e34-5909bd9a0138}</Project>
-      <Name>PE.Storage.AzureStorage</Name>
+      <Name>PE.BlobStorage.AzureStorage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\PE.Storage.Interfaces\PE.Storage.Interfaces.csproj">
+    <ProjectReference Include="..\..\src\PE.BlobStorage.Interfaces\PE.BlobStorage.Interfaces.csproj">
       <Project>{a452954d-e15b-4848-b0a9-d13e4e781cc6}</Project>
-      <Name>PE.Storage.Interfaces</Name>
+      <Name>PE.BlobStorage.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

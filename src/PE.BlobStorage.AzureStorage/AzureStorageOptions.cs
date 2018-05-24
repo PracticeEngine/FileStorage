@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace PE.Storage.AzureStorage
+namespace PE.BlobStorage.AzureStorage
 {
     public class AzureStorageOptions
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PE.Storage.AzureStorage;
+using PE.BlobStorage.AzureStorage;
 
-namespace PE.Storage.AzureStorageTests
+namespace PE.BlobStorage.AzureStorageTests
 {
     [TestClass]
     public class MetaTableTests

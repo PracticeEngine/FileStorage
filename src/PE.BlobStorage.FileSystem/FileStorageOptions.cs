@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Configuration;
 
-namespace PE.Storage.FileSystem
+namespace PE.BlobStorage.FileSystem
 {
     public class FileStorageOptions
     {

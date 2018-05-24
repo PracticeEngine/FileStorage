@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PE.Storage.AzureStorage
+namespace PE.BlobStorage.AzureStorage
 {
     /// <summary>
     /// Stores Metadata in table storage (PartitionKey = YYYYMMDD, RowKey = GUID)

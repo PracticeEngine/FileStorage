@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PE.Storage
+namespace PE.BlobStorage
 {
     /// <summary>
     /// DTO for Blob Data (does not include actual file data)

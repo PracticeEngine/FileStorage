@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace PE.Storage.FileSystem
+namespace PE.BlobStorage.FileSystem
 {
     /// <summary>
     /// Calculates File Path for a file to be stored in a random distribution of 500 root folders.  

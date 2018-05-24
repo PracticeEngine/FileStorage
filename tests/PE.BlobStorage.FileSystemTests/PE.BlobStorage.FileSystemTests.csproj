@@ -7,8 +7,8 @@
     <ProjectGuid>{43B56E83-A0F7-45D1-9085-F59938CD34A1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PE.Storage.FileSystemTests</RootNamespace>
-    <AssemblyName>PE.Storage.FileSystemTests</AssemblyName>
+    <RootNamespace>PE.BlobStorage.FileSystemTests</RootNamespace>
+    <AssemblyName>PE.BlobStorage.FileSystemTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -57,13 +57,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PE.Storage.FileSystem\PE.Storage.FileSystem.csproj">
+    <ProjectReference Include="..\..\src\PE.BlobStorage.FileSystem\PE.BlobStorage.FileSystem.csproj">
       <Project>{9395405c-4c68-4270-afe8-662186337fef}</Project>
-      <Name>PE.Storage.FileSystem</Name>
+      <Name>PE.BlobStorage.FileSystem</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\PE.Storage.Interfaces\PE.Storage.Interfaces.csproj">
+    <ProjectReference Include="..\..\src\PE.BlobStorage.Interfaces\PE.BlobStorage.Interfaces.csproj">
       <Project>{a452954d-e15b-4848-b0a9-d13e4e781cc6}</Project>
-      <Name>PE.Storage.Interfaces</Name>
+      <Name>PE.BlobStorage.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

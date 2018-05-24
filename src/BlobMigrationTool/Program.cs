@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 using CommandLine.Text;
-using PE.Storage;
+using PE.BlobStorage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,9 +13,9 @@ namespace BlobMigrationTool
     class Program
     {
         static Type[] providerTypes = new[] {
-            typeof(PE.Storage.AzureStorage.AzureStorageBlobProvider),
-            typeof(PE.Storage.BlobTable.BlobTableBlobProvider),
-            typeof(PE.Storage.FileSystem.FileSystemBlobProvider)
+            typeof(PE.BlobStorage.AzureStorage.AzureStorageBlobProvider),
+            typeof(PE.BlobStorage.BlobTable.BlobTableBlobProvider),
+            typeof(PE.BlobStorage.FileSystem.FileSystemBlobProvider)
         };
 
         /// <summary>
