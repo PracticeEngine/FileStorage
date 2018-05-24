@@ -1,0 +1,50 @@
+﻿<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <!-- The identifier that must be unique within the hosting gallery -->
+    <id>PE.OpenSource.FileStorage</id>
+
+    <!-- The package version number that is used when resolving dependencies -->
+    <version>1.0.0</version>
+
+    <!-- Authors contain text that appears directly on the gallery -->
+    <authors>Practice Engine</authors>
+
+    <!-- 
+            Owners are typically nuget.org identities that allow gallery
+            users to easily find other packages by the same owners.  
+        -->
+    <owners>rposener,ahambly</owners>
+
+    <!-- 
+            If true, this value prompts the user to accept the license when
+            installing the package. 
+        -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!-- 
+            The description can be used in package manager UI. Note that the
+            nuget.org gallery uses information you add in the portal. 
+        -->
+    <description>Abstracted File Storage</description>
+
+    <!-- Copyright information -->
+    <copyright>Copyright ©2016 Practice Engine Systems, Inc</copyright>
+
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <tags>pe file storage</tags>
+
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+      <dependency id="Microsoft.Azure.KeyVault.Core" version="1.0.0" />
+      <dependency id="Newtonsoft.Json" version="10.0.2" />
+      <dependency id="WindowsAzure.Storage" version="9.1.1" />
+    </dependencies>
+    <!-- Insert below <metadata> element -->
+    <files>
+      <file src="src\PE.Storage.Interfaces\bin\Release\PE.Storage.Interfaces.pdb" target="lib\net46\PE.Storage.Interfaces.pdb" />
+      <file src="src\PE.Storage.AzureStorage\bin\Release\PE.Storage.AzureStorage.pdb" target="lib\net46\PE.Storage.AzureStorage.pdb" />
+      <file src="src\PE.Storage.BlobTable\bin\Release\PE.Storage.BlobTable.pdb" target="lib\net46\PE.Storage.BlobTable.pdb" />
+      <file src="src\PE.Storage.FileSystem\bin\Release\PE.Storage.FileSystem.pdb" target="lib\net46\PE.Storage.FileSystem.pdb" />
+    </files>
+  </metadata>
+</package>
