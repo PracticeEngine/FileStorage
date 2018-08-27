@@ -17,13 +17,6 @@ namespace PE.BlobStorage.AzureStorage
         private readonly CloudTableClient _tableClient;
         private static bool _containersCreated;
 
-        /// <summary>
-        /// Constructor that builds Options from Default Settings
-        /// </summary>
-        public AzureStorageBlobProvider() : this(AzureStorageOptions.CreateFromDefaultSettings())
-        {
-
-        }
 
         /// <summary>
         /// Constructor that uses provided settings

@@ -12,14 +12,6 @@ namespace PE.BlobStorage.BlobTable
         private readonly BlobTableOptions _options;
 
         /// <summary>
-        /// Constructor that builds Options from Default Settings
-        /// </summary>
-        public BlobTableBlobProvider() : this(BlobTableOptions.CreateFromDefaultSettings())
-        {
-
-        }
-
-        /// <summary>
         /// Constructor that uses provided settings
         /// </summary>
         /// <param name="options"></param>

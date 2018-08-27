@@ -11,14 +11,6 @@ namespace PE.BlobStorage.FileSystem
         private readonly StoreManager _manager;
 
         /// <summary>
-        /// Constructor that builds Options from Default Settings
-        /// </summary>
-        public FileSystemBlobProvider() : this(FileStorageOptions.CreateFromDefaultSettings())
-        {
-
-        }
-
-        /// <summary>
         /// Constructor that uses provided settings
         /// </summary>
         /// <param name="options"></param>

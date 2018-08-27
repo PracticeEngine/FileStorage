@@ -5,7 +5,7 @@
     <id>PE.OpenSource.FileStorage</id>
 
     <!-- The package version number that is used when resolving dependencies -->
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <!-- Authors contain text that appears directly on the gallery -->
     <authors>Practice Engine</authors>
@@ -35,20 +35,19 @@
 
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>
-      <dependency id="Microsoft.Azure.KeyVault.Core" version="1.0.0" />
-      <dependency id="Newtonsoft.Json" version="10.0.2" />
-      <dependency id="WindowsAzure.Storage" version="9.1.1" />
+      <dependency id="Newtonsoft.Json" version="11.0.2" />
+      <dependency id="WindowsAzure.Storage" version="9.3.1" />
     </dependencies>
   </metadata>
   <!-- Insert below <metadata> element -->
   <files>
-    <file src="src\PE.BlobStorage.Interfaces\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.BlobStorage.Interfaces\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.BlobStorage.BlobTable\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.BlobStorage.BlobTable\bin\Release\*.pdb" target="lib\net46" />
-    <file src="src\PE.BlobStorage.FileSystem\bin\Release\*.dll" target="lib\net46" />
-    <file src="src\PE.BlobStorage.FileSystem\bin\Release\*.pdb" target="lib\net46" />
+    <file src="src\PE.BlobStorage.Interfaces\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.Interfaces\bin\Release\netstandard2.0\*.pdb" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.AzureStorage\bin\Release\netstandard2.0\*.pdb" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.BlobTable\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.BlobTable\bin\Release\netstandard2.0\*.pdb" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.FileSystem\bin\Release\netstandard2.0\*.dll" target="lib\netstandard2.0" />
+    <file src="src\PE.BlobStorage.FileSystem\bin\Release\netstandard2.0\*.pdb" target="lib\netstandard2.0" />
   </files>
 </package>
