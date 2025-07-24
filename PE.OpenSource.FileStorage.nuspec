@@ -5,7 +5,7 @@
     <id>PE.OpenSource.FileStorage</id>
 
     <!-- The package version number that is used when resolving dependencies -->
-    <version>1.2.0</version>
+    <version>1.3.0</version>
 
     <!-- Authors contain text that appears directly on the gallery -->
     <authors>Practice Engine</authors>
@@ -28,14 +28,14 @@
     <description>Abstracted File Storage</description>
 
     <!-- Copyright information -->
-    <copyright>Copyright ©2016 Practice Engine Systems, Inc</copyright>
+    <copyright>Copyright ©2025 Practice Engine Systems, Inc</copyright>
 
     <!-- Tags appear in the gallery and can be used for tag searches -->
     <tags>pe file storage</tags>
 
     <!-- Dependencies are automatically installed when the package is installed -->
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="11.0.2" />
+      <dependency id="Newtonsoft.Json" version="13.0.3" />
       <dependency id="WindowsAzure.Storage" version="9.3.1" />
     </dependencies>
   </metadata>
